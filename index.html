@@ -1,0 +1,51 @@
+<html>
+<head>
+<style>
+
+#container {
+    height: 12250px;
+    overflow: scroll;
+}
+
+#spriteFrame{
+  top: 0px;
+  left: 0px;
+  border: none;
+  position: fixed;
+  width: 500px;
+  height: 350px;
+  padding: 0px;
+  background-image: url('frogR.png');
+  background-position: 0px 0px;
+}
+
+
+</style>
+</head>
+<body id="demo" onscroll="myFunction()" onload="onLoad()">
+
+<div id="container">
+  <div id="spriteFrame"></div>
+</div>
+
+
+<script>
+function onLoad() {
+    window.scrollTo(0, 2);
+    console.log(window.scrolly);
+}
+
+
+var frameHeight = 350;
+var maxScroll = 12250;
+function myFunction() {
+    /*console.log(window.scrollY);*/
+    if(window.scrollY <= 1){document.getElementById("spriteFrame").style.backgroundPosition = "0px " + maxScroll + "px"; window.scrollTo(0, maxScroll);}
+    else if(window.scrollY >= (maxScroll - 835)){document.getElementById("spriteFrame").style.backgroundPosition = "0px " + 0 + "px"; window.scrollTo(0, 0);}
+    else {document.getElementById('spriteFrame').style.backgroundPosition = "0px " + (Math.floor(window.scrollY/frameHeight) * frameHeight) + "px";}
+}
+
+</script>
+
+</body>
+</html>
